@@ -35,6 +35,20 @@ Welcome to the central repository for the custom 5-Stage RV32I Processor. This r
                               +--------------------------------+
 ```
 
+## Physical Layout (GDSII)
+
+**Isolated Core Layout (`rv32i_top.gds`):**
+
+![Isolated Core GDSII](docs/assets/core_gds.png)
+*The isolated 5-stage RISC-V core showing the two 2KB SRAM macros tightly packed within the synthesized standard cells.*
+
+**Caravel User Project Wrapper (`user_project_wrapper.gds`):**
+
+![Caravel Wrapper GDSII](docs/assets/wrapper_gds.png)
+*The integrated wrapper showing the core nested inside the fixed `2.92mm x 3.52mm` user area. The unused space is properly density-filled with decoupling capacitors to meet tapeout rules.*
+
+---
+
 ## Quick Start
 To immediately run the functional RTL simulation and verify that the core executes instructions over the Wishbone bus:
 ```bash
