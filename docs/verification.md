@@ -107,3 +107,21 @@ Monitor: Wishbone Write Detected -> Addr: 0x30002004, Data: 0xDEADBEEF
 Monitor: Test rv32i_integration Passed
 [2026-06-20 12:22:26] Simulation completed successfully.
 ```
+
+---
+
+## 6. Visualizing the Physical Layout (GDSII)
+
+To visually verify the routed silicon layout, you can use KLayout to open the finalized GDSII streams.
+
+### View the Isolated Core Macro
+To inspect the isolated 5-stage CPU core (`rv32i_top`) and its internal standard cells:
+```bash
+klayout "/run/media/durgesh/Code/visualstudio/RISC-V/5-stagged cpu/caravel_user_project/gds/rv32i_top.gds"
+```
+
+### View the Full Caravel Wrapper
+To inspect the integrated design, including the CPU core, Wishbone routing, and the outer I/O pads:
+```bash
+klayout "/run/media/durgesh/Code/visualstudio/RISC-V/5-stagged cpu/caravel_user_project/gds/user_project_wrapper.gds"
+```

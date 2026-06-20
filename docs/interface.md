@@ -22,39 +22,37 @@ The Wishbone interface operates in Classic Standard mode, acting as a Slave to t
 | `wbs_dat_o` | 32 | OUT | Data Output. Data read from the Slave back to the Master. |
 
 ### 1.1 Timing Diagram: Wishbone Read Cycle
-```text
-           __    __    __    __    __
-wb_clk_i _|  |__|  |__|  |__|  |__|  |__
-         _______
-wbs_adr  ___X___ADR1____________________
-         _______
-wbs_cyc  _______|                       |___
-         _______
-wbs_stb  _______|                       |___
-         ___________________________________
-wbs_we   ___________________________________ (Read = 0)
-                                 _______
-wbs_ack  _______________________|       |___
-                                 _______
-wbs_dat_o ______________________X_DAT1__X___
+
+![Wishbone Read Cycle](assets/read_cycle.svg)
+
+*(For previewers that support it, the interactive Wavedrom code is provided below)*
+```wavedrom
+{ "signal": [
+  {"name": "wb_clk_i",  "wave": "p......."},
+  {"name": "wbs_adr_i", "wave": "x4......", "data": "ADR1"},
+  {"name": "wbs_cyc_i", "wave": "01.....0"},
+  {"name": "wbs_stb_i", "wave": "01.....0"},
+  {"name": "wbs_we_i",  "wave": "0......."},
+  {"name": "wbs_ack_o", "wave": "0.....10"},
+  {"name": "wbs_dat_o", "wave": "x.....5x", "data": "DAT1"}
+]}
 ```
 
 ### 1.2 Timing Diagram: Wishbone Write Cycle
-```text
-           __    __    __    __    __
-wb_clk_i _|  |__|  |__|  |__|  |__|  |__
-         _______
-wbs_adr  ___X___ADR1____________________
-         _______
-wbs_dat_i___X___DAT1____________________
-         _______
-wbs_cyc  _______|                       |___
-         _______
-wbs_stb  _______|                       |___
-         _______
-wbs_we   _______|                       |___ (Write = 1)
-                                 _______
-wbs_ack  _______________________|       |___
+
+![Wishbone Write Cycle](assets/write_cycle.svg)
+
+*(For previewers that support it, the interactive Wavedrom code is provided below)*
+```wavedrom
+{ "signal": [
+  {"name": "wb_clk_i",  "wave": "p......."},
+  {"name": "wbs_adr_i", "wave": "x4......", "data": "ADR1"},
+  {"name": "wbs_dat_i", "wave": "x5......", "data": "DAT1"},
+  {"name": "wbs_cyc_i", "wave": "01.....0"},
+  {"name": "wbs_stb_i", "wave": "01.....0"},
+  {"name": "wbs_we_i",  "wave": "01.....0"},
+  {"name": "wbs_ack_o", "wave": "0.....10"}
+]}
 ```
 
 ---
