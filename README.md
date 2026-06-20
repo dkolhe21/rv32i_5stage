@@ -2,37 +2,53 @@
 
 Welcome to the central repository for the custom 5-Stage RV32I Processor. This repository contains the RTL, physical layout, and comprehensive documentation for integrating a pipelined RISC-V soft core into the Efabless Caravel SoC using the Sky130 PDK.
 
-```text
-+-----------------------------------------------------------------------------------------+
-|                                  Caravel SoC Harness                                    |
-|                                                                                         |
-|   +----------------+           Wishbone Bus (wbs_cyc, wbs_stb, wbs_we, etc.)            |
-|   | Management SoC | <==============================================================+   |
-|   +----------------+                                                                |   |
-|                                                                                     |   |
-|   +---------------------------------------------------------------------------------+---+
-|   | rv32i_top (User Project Wrapper)                                                |
-|   |                                                                                 |
-|   |      +---------+      +----------+      +-----------+     +---------+      +----+---+
-|   |  +-> |  FETCH  | ===> |  DECODE  | ===> |  EXECUTE  | ==> | MEMORY  | ===> |   WB   |
-|   |  |   | (IMEM)  |      | (RegFile)|      |  (ALU)    |     | (DMEM)  |      |        |
-|   |  |   +---------+      +----------+      +-----------+     +---------+      +----+---+
-|   |  |        ^                 |                 |                 |               |
-|   |  |        |                 v                 v                 v               |
-|   |  |        |           +-------------------------------------------------+       |
-|   |  |        |           |                Hazard Unit                      |       |
-|   |  |        +-----------|  (Stalls, Forwarding, Branch Mispredict Flush)  | <-----+
-|   |  |                    +-------------------------------------------------+       |
-|   |  |                                                                              |
-|   |  +--------------------------- Wishbone FSM Controller <-------------------------+
-|   |                                         |
-|   +-----------------------------------------|---------------------------------------+
-|                                             |
-+---------------------------------------------|-------------------------------------------+
-                                              v
-                              +--------------------------------+
-                              | 2x 2KB SRAM (OpenRAM Macros)   |
-                              +--------------------------------+
+```mermaid
+%%{init: { 'theme': 'dark', 'themeVariables': { 'primaryColor': '#1a1a2e', 'primaryTextColor': '#e0e0e0', 'primaryBorderColor': '#4a90e2', 'lineColor': '#a0a0a0', 'secondaryColor': '#16213e', 'tertiaryColor': '#0f3460' } } }%%
+flowchart TB
+    subgraph Caravel["Caravel SoC Harness"]
+        MgmtSoC["Management SoC"]
+        
+        subgraph Wrapper["rv32i_top (User Project Wrapper)"]
+            direction LR
+            subgraph Pipeline["5-Stage Pipeline"]
+                direction LR
+                IF["IF (IMEM)"] --> ID["ID (RegFile)"] --> EX["EX (ALU)"] --> MEM["MEM (DMEM)"] --> WB["WB"]
+            end
+            
+            Hazard["Hazard Unit<br>(Stall/Forward/Flush)"]
+            WbFSM["Wishbone FSM Controller"]
+            
+            %% Control & Data Flow inside Wrapper
+            Hazard -->|Flush| IF
+            EX -.->|Forward| Hazard
+            WB -.->|Forward| Hazard
+            IF -->|Fetch| WbFSM
+            MEM -->|Data| WbFSM
+        end
+
+        SRAM["2x 2KB SRAM<br>(OpenRAM Macros)"]
+        
+        %% External Connections
+        MgmtSoC -->|Wishbone Bus| WbFSM
+        WbFSM --> SRAM
+    end
+
+    %% Colour Definitions (Dark Mode Optimized)
+    classDef mgmt fill:#ff8f00,color:#000,stroke:#fff;
+    classDef pipe fill:#0d47a1,color:#fff,stroke:#42a5f5;
+    classDef hazard fill:#b71c1c,color:#fff,stroke:#ef5350;
+    classDef sram fill:#4a148c,color:#fff,stroke:#ab47bc;
+    classDef fsm fill:#004d40,color:#fff,stroke:#26a69a;
+    classDef harness fill:#1e1e1e,color:#fff,stroke:#4a90e2,stroke-width:2px;
+    classDef wrapper fill:#0d2b45,color:#fff,stroke:#00bcd4,stroke-width:2px;
+
+    class MgmtSoC mgmt;
+    class IF,ID,EX,MEM,WB pipe;
+    class Hazard hazard;
+    class SRAM sram;
+    class WbFSM fsm;
+    class Caravel harness;
+    class Wrapper wrapper;
 ```
 
 ## Physical Layout (GDSII)
