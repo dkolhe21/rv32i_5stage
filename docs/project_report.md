@@ -154,6 +154,9 @@ To demonstrate the efficiency of the 5-stage pipeline and standard-cell placemen
 
 ## 5. Verification Summary
 
+### 5.1 RTL Functional Simulation
+![Caravel Integration Waveforms](assets/waveform.png)
+*RTL Simulation captured via GTKWave. The RV32I 5-stage pipeline is shown actively executing instructions after the Caravel Management SoC boot sequence (t > 1.3ms), with Wishbone bus handshakes clearly visible.*
 To achieve tapeout readiness, the core passed all 5 major validation checkpoints:
 
 | Check Type | Tool | Status | Description/Waivers |

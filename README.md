@@ -65,6 +65,12 @@ flowchart TB
 
 ---
 
+## RTL Simulation Execution
+
+![Caravel Integration Waveforms](docs/assets/waveform.png)
+*GTKWave trace showing the RV32I pipeline actively fetching, decoding, and executing instructions, interacting flawlessly with the Wishbone Memory bus.*
+
+---
 ## Quick Start
 To immediately run the functional RTL simulation and verify that the core executes instructions over the Wishbone bus:
 ```bash
