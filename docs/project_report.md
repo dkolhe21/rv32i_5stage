@@ -100,7 +100,23 @@ We engineered a custom Python script (`fix_lef.py`) that deleted the fractured g
 
 ---
 
-## 4.3 Timing Closure & Dual-Frequency Margins
+### 4.3 Physical Layout (GDSII)
+
+The final generated GDSII files successfully integrated the soft core logic alongside the OpenRAM macro hard IPs. 
+
+**Isolated Core Layout (`rv32i_top.gds`):**
+
+![Isolated Core GDSII](assets/core_gds.png)
+*The isolated 5-stage RISC-V core showing the two 2KB SRAM macros tightly packed within the synthesized standard cells.*
+
+**Caravel User Project Wrapper (`user_project_wrapper.gds`):**
+
+![Caravel Wrapper GDSII](assets/wrapper_gds.png)
+*The integrated wrapper showing the core nested inside the fixed `2.92mm x 3.52mm` user area. The unused space is properly density-filled with decoupling capacitors to meet tapeout rules.*
+
+---
+
+## 4.4 Timing Closure & Dual-Frequency Margins
 
 The design was validated against two distinct timing constraints to ensure both system-level robustness and high-performance core logic:
 
