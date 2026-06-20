@@ -34,13 +34,13 @@ flowchart TB
             WB -.->|Forward| Hazard
             IF -->|Fetch| WbFSM
             MEM -->|Data| WbFSM
+            
+            SRAM["2x 2KB SRAM<br>(OpenRAM Macros)"]
+            WbFSM <-->|Address / Data| SRAM
         end
 
-        SRAM["2x 2KB SRAM<br>(OpenRAM Macros)"]
-        
         %% External Connections
-        MgmtSoC -->|Wishbone Bus| WbFSM
-        WbFSM --> SRAM
+        MgmtSoC <==>|Wishbone Bus| WbFSM
     end
 
     %% Colour Definitions (Dark Mode Optimized)
