@@ -23,37 +23,51 @@ The Wishbone interface operates in Classic Standard mode, acting as a Slave to t
 
 ### 1.1 Timing Diagram: Wishbone Read Cycle
 
-![Wishbone Read Cycle](assets/read_cycle.svg)
-
-*(For previewers that support it, the interactive Wavedrom code is provided below)*
-```wavedrom
-{ "signal": [
-  {"name": "wb_clk_i",  "wave": "p......."},
-  {"name": "wbs_adr_i", "wave": "x4......", "data": "ADR1"},
-  {"name": "wbs_cyc_i", "wave": "01.....0"},
-  {"name": "wbs_stb_i", "wave": "01.....0"},
-  {"name": "wbs_we_i",  "wave": "0......."},
-  {"name": "wbs_ack_o", "wave": "0.....10"},
-  {"name": "wbs_dat_o", "wave": "x.....5x", "data": "DAT1"}
-]}
-```
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="14" style="background-color: white; padding: 10px; border-radius: 5px;">
+  <text x="10" y="20" font-weight="bold">Wishbone Read Cycle</text>
+  <text x="10" y="55">wb_clk_i</text>
+  <path d="M 100 50 h 20 v -15 h 20 v 15 h 20 v -15 h 20 v 15 h 20 v -15 h 20 v 15 h 20 v -15 h 20 v 15 h 20 v -15 h 20 v 15 " fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="85">wbs_adr_i</text>
+  <path d="M 100 80 h 35 l 5 -10 h 155 l 5 10 h 100" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M 100 65 h 35 l 5 10 h 155 l 5 -10 h 100" fill="none" stroke="black" stroke-width="2"/>
+  <text x="210" y="78" text-anchor="middle">ADR1</text>
+  <text x="10" y="115">wbs_cyc_i</text>
+  <path d="M 100 110 h 40 v -15 h 155 v 15 h 105" fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="145">wbs_stb_i</text>
+  <path d="M 100 140 h 40 v -15 h 155 v 15 h 105" fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="175">wbs_we_i</text>
+  <path d="M 100 170 h 300" fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="205">wbs_ack_o</text>
+  <path d="M 100 200 h 160 v -15 h 35 v 15 h 105" fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="235">wbs_dat_o</text>
+  <path d="M 100 230 h 155 l 5 -10 h 35 l 5 10 h 100" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M 100 215 h 155 l 5 10 h 35 l 5 -10 h 100" fill="none" stroke="black" stroke-width="2"/>
+  <text x="180" y="228" text-anchor="middle">DAT1</text>
+</svg>
 
 ### 1.2 Timing Diagram: Wishbone Write Cycle
 
-![Wishbone Write Cycle](assets/write_cycle.svg)
-
-*(For previewers that support it, the interactive Wavedrom code is provided below)*
-```wavedrom
-{ "signal": [
-  {"name": "wb_clk_i",  "wave": "p......."},
-  {"name": "wbs_adr_i", "wave": "x4......", "data": "ADR1"},
-  {"name": "wbs_dat_i", "wave": "x5......", "data": "DAT1"},
-  {"name": "wbs_cyc_i", "wave": "01.....0"},
-  {"name": "wbs_stb_i", "wave": "01.....0"},
-  {"name": "wbs_we_i",  "wave": "01.....0"},
-  {"name": "wbs_ack_o", "wave": "0.....10"}
-]}
-```
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="14" style="background-color: white; padding: 10px; border-radius: 5px;">
+  <text x="10" y="20" font-weight="bold">Wishbone Write Cycle</text>
+  <text x="10" y="55">wb_clk_i</text>
+  <path d="M 100 50 h 20 v -15 h 20 v 15 h 20 v -15 h 20 v 15 h 20 v -15 h 20 v 15 h 20 v -15 h 20 v 15 h 20 v -15 h 20 v 15 " fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="85">wbs_adr_i</text>
+  <path d="M 100 80 h 35 l 5 -10 h 155 l 5 10 h 100" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M 100 65 h 35 l 5 10 h 155 l 5 -10 h 100" fill="none" stroke="black" stroke-width="2"/>
+  <text x="210" y="78" text-anchor="middle">ADR1</text>
+  <text x="10" y="115">wbs_dat_i</text>
+  <path d="M 100 110 h 35 l 5 -10 h 155 l 5 10 h 100" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M 100 95 h 35 l 5 10 h 155 l 5 -10 h 100" fill="none" stroke="black" stroke-width="2"/>
+  <text x="210" y="108" text-anchor="middle">DAT1</text>
+  <text x="10" y="145">wbs_cyc_i</text>
+  <path d="M 100 140 h 40 v -15 h 155 v 15 h 105" fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="175">wbs_stb_i</text>
+  <path d="M 100 170 h 40 v -15 h 155 v 15 h 105" fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="205">wbs_we_i</text>
+  <path d="M 100 200 h 40 v -15 h 155 v 15 h 105" fill="none" stroke="black" stroke-width="2"/>
+  <text x="10" y="235">wbs_ack_o</text>
+  <path d="M 100 230 h 160 v -15 h 35 v 15 h 105" fill="none" stroke="black" stroke-width="2"/>
+</svg>
 
 ---
 
