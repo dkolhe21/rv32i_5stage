@@ -1,0 +1,23 @@
+# Efabless Caravel dependencies
+caravel/
+mgmt_core_wrapper/
+dependencies/
+pdks/
+openlane/**/runs/
+precheck_results/
+drc_results.txt
+*.log
+*.vcd
+*.vvp
+*.out
+*.pyc
+__pycache__/
+
+# Magic and OpenLane temp files
+*.mag.bak
+*.lef.bak
+*.def.bak
+
+# Large unneeded binary files
+sv2v_bin/
+sv2v-Linux.zip

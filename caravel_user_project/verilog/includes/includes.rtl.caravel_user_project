@@ -1,0 +1,2 @@
+-v $(USER_PROJECT_VERILOG)/rtl/rv32i_top_sv2v.v
+-v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v

@@ -1,0 +1,26 @@
+# Ignore massive directories inside the project
+caravel_user_project/precheck_results/
+caravel_user_project/mgmt_core_wrapper/
+caravel_user_project/caravel/
+caravel_user_project/openlane/*/runs/
+caravel_user_project/dependencies/
+caravel_user_project/pdks/
+
+# Ignore outputs
+*.log
+*.vcd
+*.vvp
+*.out
+*.pyc
+__pycache__/
+
+# Ignore specific large files
+caravel_user_project/drc_results.txt
+caravel_user_project/sv2v-Linux.zip
+caravel_user_project/sv2v_bin/
+
+# Ignore backups
+*.bak
+*.mag.bak
+*.lef.bak
+*.def.bak
