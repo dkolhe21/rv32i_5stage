@@ -84,9 +84,9 @@ The project is thoroughly documented. Please refer to the `docs/` folder for all
 
 - 📖 **[Hardware Specification (spec.md)](./docs/spec.md)** - ISA, frequencies, power, and memory maps.
 - 🚀 **[Project Report (project_report.md)](./docs/project_report.md)** - Deep architectural explanations and tapeout summary.
+- 🧪 **[Verification Methodology (verification.md)](./docs/verification.md)** - Details on testbenches, simulation phases, and validation coverage.
 - 🔌 **[Interface Definition (interface.md)](./docs/interface.md)** - Wishbone timing diagrams and pinouts.
 - 🛠️ **[Commands Reference (commands_reference.md)](./docs/commands_reference.md)** - OpenLane and Precheck docker commands.
-- 🧪 **[Simulation Setup (verification.md)](./docs/verification.md)** - Testbench architectures and coverage metrics.
 - 🐛 **[Errors & Resolutions (errors_and_resolutions.md)](./docs/errors_and_resolutions.md)** - The full problem log and how routing DRCs were solved.
 - 📜 **[Coding Rules (coding_rules.md)](./docs/coding_rules.md)** - SystemVerilog conventions for synthesis.
 - 📅 **[Timeline (timeline.md)](./docs/timeline.md)** - Tapeout milestones.
